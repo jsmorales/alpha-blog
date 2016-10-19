@@ -1,5 +1,12 @@
 class ArticlesController < ApplicationController
 
+	#este callback define que antes de cualquier cosa
+	#se va a ejecutar el metodo dicho en esta linea
+	#y solo se quiere esto en show,edit,update,destroy
+	#para esto se utiliza only y el arreglo de funciones
+
+	before_action :set_article, only: [:show, :edit, :update, :destroy]
+
 	def index
 		@articles = Article.all		
 	end	
@@ -9,11 +16,11 @@ class ArticlesController < ApplicationController
 	end
 
 	def show
-		@article = Article.find(params[:id])
+		#@article = Article.find(params[:id])
 	end
 
 	def edit
-		@article = Article.find(params[:id])
+		#@article = Article.find(params[:id])
 	end
 
 	#crea despues de new
@@ -41,7 +48,7 @@ class ArticlesController < ApplicationController
 	#actualiza despues de edit
 	def update
 
-		@article = Article.find(params[:id])
+		#@article = Article.find(params[:id])
 
 		if @article.update(article_params)
 			flash[:notice] = "Se actualizó correctamente!"
@@ -54,13 +61,19 @@ class ArticlesController < ApplicationController
 
 
 	def destroy
-		@article = Article.find(params[:id])
+		#@article = Article.find(params[:id])
 		@article.destroy
 		flash[:notice] = "El artículo '"+@article.tittle+"' ha sido eliminado."
 		redirect_to articles_path		
 	end
 
 	private
+
+		def set_article
+			#se define este metodo para no estar repitiendo
+			#esta línea en todos los metodos que la necesitan
+			@article = Article.find(params[:id])
+		end
 
 		def article_params
 			#aca se define que los unicos parametros permitidos son
