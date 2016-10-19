@@ -1,2 +1,30 @@
+$navbar-default-bg: #0B7CCC;
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+#logo{
+	float: left;
+	font-size: 1.7em;
+	color: #FFFFFF;
+	text-transform: uppercase;
+	letter-spacing: -1px;
+	font-weigth: bold;
+}
+
+#logo:hover {
+	color: #A9A9A9;
+	text-decoration: none;
+}
+
+.navbar{
+	border-radius: 0px!important;
+}
+
+.nv-link{
+	color: white!important;
+}
+
+.nv-link:hover{
+	color: #A9A9A9!important;
+}

@@ -9,11 +9,13 @@
 	<body>
 
 		<!-- Para mostrar los mensajes de las operaciones se hace de la siguiente forma -->
-
-		<%= render 'layouts/mensajes'%>
 		<%= render 'layouts/menu'%>
-
-		<%= yield %>
+		<%= render 'layouts/mensajes'%>		
+		
+		<div class="container">
+			<%= yield %>
+		</div>
+		
 
 	</body>
 </html>

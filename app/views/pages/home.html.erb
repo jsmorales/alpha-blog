@@ -1,5 +1,10 @@
-<h1>Home</h1>
-<!-- image_tag() muestra las imagenes almacenadas en assets -->
-<% link_to image_tag('master.jpg'), 'Master of the Moon' %>
-
-<p>Este es el home de mi aplicación.</p>
+<div class="jumbotron text-center">
+	<div class="container">
+		<h1>Bienvenido a Alpha Blog</h1>
+		<p>En esta aplicación puedes llevar tu propio BLOG!</p>
+		<p>
+			<!--<a class="btn btn-primary btn-lg">Crear Nuevo Artículo</a>-->
+			<%= link_to "Crear Cuenta", "", class: "btn btn-primary btn-lg" %>
+		</p>
+	</div>
+</div>
