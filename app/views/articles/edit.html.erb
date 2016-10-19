@@ -1,4 +1,4 @@
-<h2>Nuevo artículo</h2>
+<h2>Editar artículo</h2>
 
 <!-- Muestra los mensajes de error de 
 las validaciones del modelo, esto se puede comprobar por consola. -->
@@ -25,3 +25,8 @@ las validaciones del modelo, esto se puede comprobar por consola. -->
 	<br>
 	<%= f.submit "Guardar" %>
 <%end%>
+
+<p>
+	<%= link_to "Ver Artículo", article_path(@article) %>
+</p>
+

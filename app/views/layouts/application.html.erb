@@ -8,6 +8,19 @@
 </head>
 <body>
 
+<!-- Para mostrar los mensajes de las operaciones se hace de la siguiente forma -->
+
+<% flash.each do |name, msg| %>
+	<ul>
+		<li><%= msg %></li>
+	</ul>
+<%end%>
+
+<ul>
+	<li><%= link_to "Inicio", root_path %></li>
+	<li><%= link_to "Artículos", articles_path %></li>
+</ul>
+
 <%= yield %>
 
 </body>
