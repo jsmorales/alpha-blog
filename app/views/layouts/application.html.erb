@@ -6,22 +6,14 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+	<body>
 
-<!-- Para mostrar los mensajes de las operaciones se hace de la siguiente forma -->
+		<!-- Para mostrar los mensajes de las operaciones se hace de la siguiente forma -->
 
-<% flash.each do |name, msg| %>
-	<ul>
-		<li><%= msg %></li>
-	</ul>
-<%end%>
+		<%= render 'layouts/mensajes'%>
+		<%= render 'layouts/menu'%>
 
-<ul>
-	<li><%= link_to "Inicio", root_path %></li>
-	<li><%= link_to "Artículos", articles_path %></li>
-</ul>
+		<%= yield %>
 
-<%= yield %>
-
-</body>
+	</body>
 </html>
