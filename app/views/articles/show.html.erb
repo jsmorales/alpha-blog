@@ -1,8 +1,9 @@
 <!-- se muestra todo lo que se halla cargado en la variable global -->
 <h1><%= @article.tittle %></h1> 
-<br>
+<hr>
 <p><%= @article.description %></p>
 
-<p>
-	<%= link_to "Editar Artículo", edit_article_path(@article) %>
-</p>  
+<hr>
+<div class="col-sm-12">
+	<%= link_to "Editar", edit_article_path(@article), class: "btn btn-warning" %>	
+</div>  

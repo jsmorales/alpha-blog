@@ -1,10 +1,10 @@
-<h2>Editar artículo</h2>
-
+<h2 class="text-center">Editar artículo</h2>
+<hr>
 <!-- Muestra los mensajes de error de 
 las validaciones del modelo, esto se puede comprobar por consola. -->
 <%= render 'form'%>
 
-<p>
-	<%= link_to "Ver Artículo", article_path(@article) %>
-</p>
+<div class="col-sm-12 text-center">
+	<%= link_to "Ver Artículo", article_path(@article), class: "" %>
+</div>
 
