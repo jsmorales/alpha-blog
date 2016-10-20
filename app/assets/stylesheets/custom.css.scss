@@ -32,3 +32,19 @@ $navbar-default-bg: #0B7CCC;
 .tbl-opciones{
     width: 140px!important;	
 }
+
+.jumbotron{
+	background-image: asset-url('img1.jpg');
+	background-size: cover;
+	color: #ffffff;
+	height: 550px;
+	padding-top: 220px;
+
+}
+
+footer {
+	margin-top: 45px;
+	padding-top: 5px;
+	border-top: 1px solid #eaeaea;
+	color: #777;
+}
