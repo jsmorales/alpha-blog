@@ -1,9 +1,21 @@
 <!-- se muestra todo lo que se halla cargado en la variable global -->
-<h1><%= @article.tittle %></h1> 
-<hr>
-<p><%= @article.description %></p>
+<div class="row">
+	
+	<div class="panel panel-default">
+		<div class="panel-body">
 
-<hr>
-<div class="col-sm-12">
-	<%= link_to "Editar", edit_article_path(@article), class: "btn btn-warning" %>	
+			<h1 class="text-center"><%= @article.tittle %></h1> 
+			<hr>
+			<!-- Muestra todos los saltos de linea tal como se escribe dentro del textarea. -->
+			<p><%= simple_format(@article.description) %></p>
+			<hr>
+			<div class="col-sm-12">
+				<%= link_to "Editar", edit_article_path(@article), class: "btn btn-xs btn-warning" %>
+				<%= link_to "Eliminar", article_path(@article), method: :delete, data: {confirm:"Esta seguro que quiere eliminar el artículo '"+@article.tittle+"'?"}, class: "btn btn-xs btn-danger" %>
+				<%= link_to "Ver Todos", articles_path, class: "btn btn-xs btn-primary" %>	
+			</div>
+
+		</div>
+	</div>
+
 </div>  
