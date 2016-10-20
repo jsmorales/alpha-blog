@@ -1,16 +1,7 @@
-<!-- Muestra los mensajes de error de 
-las validaciones del modelo, esto se puede comprobar por consola. -->
-<% if @article.errors.any? %>
-
-	<ul>
-		<%= @article.errors.full_messages.each do |msg| %>
-			<li><%= msg %></li>
-		<% end %>
-	</ul>
-
-<% else %>
-	<ul></ul>
-<% end %>
+<h2 class="text-center"><%= titulo %></h2>
+<hr>
+<!-- Se renderiza con parametros -->
+<%= render 'shared/errors', objt: @article %>
 
 <div class="row">
 	

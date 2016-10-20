@@ -37,7 +37,7 @@ class ArticlesController < ApplicationController
 		
 		if @article.save
 			#da el mensaje que se guardo bien
-			flash[:notice] = "Se guardó correctamente!"
+			flash[:success] = "Se guardó correctamente!"
 			redirect_to article_path(@article)
 		else
 			render 'new'
@@ -51,7 +51,7 @@ class ArticlesController < ApplicationController
 		#@article = Article.find(params[:id])
 
 		if @article.update(article_params)
-			flash[:notice] = "Se actualizó correctamente!"
+			flash[:success] = "Se actualizó correctamente!"
 			redirect_to article_path(@article)
 		else
 			render 'edit'
@@ -63,7 +63,7 @@ class ArticlesController < ApplicationController
 	def destroy
 		#@article = Article.find(params[:id])
 		@article.destroy
-		flash[:notice] = "El artículo '"+@article.tittle+"' ha sido eliminado."
+		flash[:danger] = "El artículo '"+@article.tittle+"' ha sido eliminado."
 		redirect_to articles_path		
 	end
 

@@ -1,0 +1,26 @@
+<!-- Muestra los mensajes de error de 
+las validaciones del modelo, esto se puede comprobar por consola. -->
+
+<% if objt.errors.any? %>
+	
+	<div class="row">
+		<div class="col-xs-8 col-xs-offset-2">
+			
+			<div class="panel panel-danger">
+				<div class="panel-heading">
+					<!-- El método pluralize cuenta si es uno o mas elementos y cambia la palabra segun sea. -->
+					<h3 class="panel-title"><%= pluralize(objt.errors.count, "Error")%> </h3>
+				</div>
+				<div class="panel-body">
+					<ul>
+						<%= objt.errors.full_messages.each do |msg| %>
+							<li><%= msg %></li>
+						<% end %>
+					</ul>					
+				</div>
+			</div>
+
+		</div>
+	</div>
+	
+<% end %>
