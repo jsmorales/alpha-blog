@@ -59,6 +59,8 @@ class ArticlesController < ApplicationController
 	def update
 
 		#@article = Article.find(params[:id])
+		#añadiendo el usuario a la maldita sea
+		@article.user = User.first
 
 		if @article.update(article_params)
 			flash[:success] = "Se actualizó correctamente!"

@@ -8,6 +8,10 @@
 			<hr>
 			<!-- Muestra todos los saltos de linea tal como se escribe dentro del textarea. -->
 			<p><%= simple_format(@article.description) %></p>
+			<hr>			 			
+			<%= raw("<small class='badge'>Creado por: #{@article.user.username} </small>") unless @article.user.nil? %>			
+			<small class="badge">Creado: <%= time_ago_in_words(@article.created_at) %></small>
+			<small class="badge">Actualizado: <%= time_ago_in_words(@article.updated_at) %></small>
 			<hr>
 			<div class="col-sm-12">
 				<%= link_to "Editar", edit_article_path(@article), 
