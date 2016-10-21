@@ -27,7 +27,17 @@ class ArticlesController < ApplicationController
 	def create
 		#para mostrar lo que se esta enviando se hace con
 		#render plain: params[:article].inspect
+		
+		#para hacer debug basta con escribir:
+		#debugger 
+		#en la linea necesaria
+		#para pasar a la siguiente linea se escribe n 
+		#y para terminar se ejecuta ctr+d
+
 		@article = Article.new(article_params)
+		#se añade un usuario a las malas
+		@article.user = User.first
+
 		#@article.save
 		#redirecciona a la pagina del articulo cuando lo 
 		#halla creado.

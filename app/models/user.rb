@@ -1,4 +1,11 @@
 class User < ActiveRecord::Base
+	#indica que usuario tiene varios articulos
+	has_many :articles
+
+	#antes de guardar se quiere que todo lo que sea de tipo email
+	#lu guarde en la BD en minuscula, con un metodo llamado before save.
+	before_save { self.email = email.downcase }
+
 	#uniqueness valida que el valor sea único en la base de datos
 	#en este caso lo hace eliminando el caso sensitivo osea que joel y Joel son lo mismo.
 	validates :username, 
