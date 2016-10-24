@@ -11,5 +11,8 @@
 </h4>
 <br>
 <!-- solo muestra los articulos de este usuario-->
-<%= render 'articles/article', objt: @user.articles %>
+<%= render 'articles/article', objt: @user_articles %>
 
+<div class="text-center">
+	<%= will_paginate @user_articles %>
+</div>
