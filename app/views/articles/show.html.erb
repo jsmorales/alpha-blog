@@ -3,15 +3,23 @@
 	
 	<div class="panel panel-default">
 		<div class="panel-body">
-
+		
 			<h1 class="text-center"><%= @article.tittle %></h1> 
 			<hr>
 			<!-- Muestra todos los saltos de linea tal como se escribe dentro del textarea. -->
 			<p><%= simple_format(@article.description) %></p>
-			<hr>			 			
-			<%= raw("<small class='badge'>Creado por: #{@article.user.username} </small>") unless @article.user.nil? %>			
+			<hr>
+			<!-- valida si el articulo tiene relacionado un usuario -->	
+			<% if @article.user %>
+				<%= raw("<small class='badge primary'>Creado por: #{@article.user.username} </small>") %>
+				<%= gravatar_for @article.user, size: 30 %>			
+				<%= link_to pluralize(@article.user.articles.count, "Artículo"), user_path(@article.user) %>
+				|
+			<% end %>
+						
 			<small class="badge">Creado: <%= time_ago_in_words(@article.created_at) %></small>
 			<small class="badge">Actualizado: <%= time_ago_in_words(@article.updated_at) %></small>
+
 			<hr>
 			<div class="col-sm-12">
 				<%= link_to "Editar", edit_article_path(@article), 
@@ -25,6 +33,7 @@
 			</div>
 
 		</div>
+
 	</div>
 
 </div>  
