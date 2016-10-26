@@ -22,9 +22,11 @@ class UsersController < ApplicationController
 		@user = User.new(user_params)
 						
 		if @user.save
+			#crea la cookie de session id
+			session[:user_id] = @user.id
 			#da el mensaje que se guardo bien
 			flash[:success] = "El usuario #{@user.username} se registró correctamente!"
-			redirect_to articles_path
+			redirect_to user_path(@user)
 		else
 			render 'new'
 		end

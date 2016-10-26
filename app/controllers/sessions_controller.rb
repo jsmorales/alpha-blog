@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
 
+	
+	
 	#renderiza un formulario
 	def new
 		#@session = 
