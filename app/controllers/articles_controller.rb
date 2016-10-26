@@ -7,6 +7,14 @@ class ArticlesController < ApplicationController
 
 	before_action :set_article, only: [:show, :edit, :update, :destroy]
 
+	#callback usando el metodo require_user para restringir usuarios
+	#a excepcion de los siguientes->
+	before_action :require_user, except: [:index, :show]
+
+	#hay que validar que el usuario que esta logueado sea el que 
+	#pueda ejecutar las acciones en sus articulos
+	before_action :require_same_user, only: [:edit, :update, :destroy]
+
 	def index
 		#@articles = Article.all
 		@articles = Article.paginate(page: params[:page], per_page: 5)		
@@ -22,6 +30,7 @@ class ArticlesController < ApplicationController
 
 	def edit
 		#@article = Article.find(params[:id])
+		#require_user
 	end
 
 	#crea despues de new
@@ -36,8 +45,8 @@ class ArticlesController < ApplicationController
 		#y para terminar se ejecuta ctr+d
 
 		@article = Article.new(article_params)
-		#se añade un usuario a las malas
-		@article.user = User.first
+		#se añade usuario segun el usuario logueado
+		@article.user = current_user
 
 		#@article.save
 		#redirecciona a la pagina del articulo cuando lo 
@@ -92,6 +101,15 @@ class ArticlesController < ApplicationController
 			#aca se define que los unicos parametros permitidos son
 			#el titulo y la descripcion
 			params.require(:article).permit(:tittle, :description)
+		end
+
+		def require_same_user
+
+			if current_user != @article.user
+				flash[:danger] = "Solo puede editar o eliminar sus propios artículos."
+				redirect_to articles_path
+			end
+
 		end
 
 end
