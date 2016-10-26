@@ -4,7 +4,9 @@
 		<hr>
 	</div>
 	<div class="col-md-6 text-right">
+	<% if logged_in? %>
 		<%= link_to raw("Nuevo Artículo <span class='glyphicon glyphicon-plus'></span>"), new_article_path, class: "btn btn-primary"%>
+	<% end %>
 	</div>	
 </div>
 

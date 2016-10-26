@@ -24,15 +24,28 @@
 				<button type="submit" class="btn btn-default">Submit</button>
 			</form>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a class="nv-link" href="#">Link</a></li>
+				<li><%= link_to "Usuarios", users_path, class: "nv-link" %></li>
 				<li class="dropdown">
+
+				<% if logged_in? %>
+					<a href="#" class="dropdown-toggle nv-link" data-toggle="dropdown"><%= current_user.username %> <b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a href="#"><%= link_to "Ver Perfil", user_path(current_user) %></a></li>
+						<li><a href="#"><%= link_to "Editar Perfil", edit_user_path(current_user) %></a></li>
+						<li><a href="#"><%= link_to "Cerrar Sesión", logout_path, method: :delete %></a></li>
+					</ul>
+				<% else %>
 					<a href="#" class="dropdown-toggle nv-link" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
 					<ul class="dropdown-menu">
-						<li><a href="#"><%= link_to "Cerrar Sesión", logout_path, method: :delete %></a></li>
-						<li><a href="#">Another action</a></li>
+
+						<li><a href="#"><%= link_to "Iniciar Sesión", login_path %></a></li>
+						<li><a href="#"><%= link_to "Registrarse", signup_path %></a></li>
+				
+						<!--<li><a href="#">Another action</a></li>
 						<li><a href="#">Something else here</a></li>
-						<li><a href="#">Separated link</a></li>
+						<li><a href="#">Separated link</a></li>-->
 					</ul>
+				<% end %>
 				</li>
 			</ul>
 		</div><!-- /.navbar-collapse -->

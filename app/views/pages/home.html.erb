@@ -4,7 +4,9 @@
 		<p>En esta aplicación puedes llevar tu propio Blog, puedes visitar algunos <%= link_to "artículos", articles_path%>.</p>
 		<p>
 			<!--<a class="btn btn-primary btn-lg">Crear Nuevo Artículo</a>-->
-			<%= link_to "Crear Cuenta", "", class: "btn btn-primary btn-lg" %>
+		<% if !logged_in? %>
+			<%= link_to "Crear Cuenta", signup_path, class: "btn btn-primary btn-lg" %>
+		<% end %>
 		</p>
 	</div>
 </div>

@@ -19,7 +19,11 @@ class SessionsController < ApplicationController
 		if user && user.authenticate(params[:session][:password])
 
 			flash[:success] = "Se ha autenticado correctamente."
+			#dentro de la cookie session se crea un hash user_id
+			session[:user_id] = user.id
+
 			#va a la pagina de detalle del usuario
+			#debugger
 			redirect_to user_path(user)
 
 		else
