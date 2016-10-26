@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 
-	before_action :set_user, only: [:show, :edit, :update]
-	before_action :require_same_user, only: [:edit, :update, :destroy]
+	before_action :set_user, only: [:show, :edit, :update, :destroy]
+	before_action :require_same_user, only: [:edit, :update]
+	before_action :require_admin, only: [:destroy]
 
 	def index
 		#@users = User.all
@@ -48,6 +49,20 @@ class UsersController < ApplicationController
 		end
 	end
 
+	def destroy
+		
+		#cierra la session si es el usuario mismo
+		if current_user == @user
+			session[:user_id] = nil
+		end
+
+		@user.destroy
+		
+		#mensaje de eliminación
+		flash[:danger] = "La cuenta y los artículos de '"+@user.username+"' han sido eliminados."
+		redirect_to users_path
+	end
+
 	private
 
 	def user_params
@@ -62,6 +77,15 @@ class UsersController < ApplicationController
 
 		if current_user != @user
 			flash[:danger] = "Solo puede editar o eliminar su propio perfil."
+			redirect_to users_path
+		end
+
+	end
+
+	def require_admin
+
+		if !current_user.admin?
+			flash[:danger] = "No tiene permisos de Administrador para ejecutar esta acción."
 			redirect_to users_path
 		end
 

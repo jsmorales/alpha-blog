@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
-	
-	
+	before_action :user_logged_already, only: [:new]
+
 	#renderiza un formulario
 	def new
 		#@session = 
@@ -42,6 +42,17 @@ class SessionsController < ApplicationController
 		session[:user_id] = nil
 		flash[:success] = "Se ha cerrado su sesión correctamente."
 		redirect_to root_path
+	end
+
+	private
+
+	def user_logged_already
+		
+		if logged_in?
+			flash[:warning] = "Ya está autenticado en el sistema."
+			redirect_to user_path(current_user)
+		end
+
 	end
 
 end

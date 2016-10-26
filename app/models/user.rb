@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
 	#indica que usuario tiene varios articulos
-	has_many :articles
+	#dependent: :destroy indica que todo lo relacionado a este
+	#registro se elimina de igual forma
+	has_many :articles, dependent: :destroy
 
 	#antes de guardar se quiere que todo lo que sea de tipo email
 	#lu guarde en la BD en minuscula, con un metodo llamado before save.

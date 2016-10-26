@@ -30,12 +30,18 @@
 				<% if logged_in? %>
 					<a href="#" class="dropdown-toggle nv-link" data-toggle="dropdown"><%= current_user.username %> <b class="caret"></b></a>
 					<ul class="dropdown-menu">
+						<% if current_user.admin? %>
+							<li class="dropdown-header" >Alpha Admin</li>							
+						<% else %>
+							<li class="dropdown-header" >Alpha Blogger</li>
+						<% end %>
 						<li><a href="#"><%= link_to "Ver Perfil", user_path(current_user) %></a></li>
 						<li><a href="#"><%= link_to "Editar Perfil", edit_user_path(current_user) %></a></li>
+						<li role="separator" class="divider"></li>
 						<li><a href="#"><%= link_to "Cerrar Sesión", logout_path, method: :delete %></a></li>
 					</ul>
 				<% else %>
-					<a href="#" class="dropdown-toggle nv-link" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+					<a href="#" class="dropdown-toggle nv-link" data-toggle="dropdown">Usuario <b class="caret"></b></a>
 					<ul class="dropdown-menu">
 
 						<li><a href="#"><%= link_to "Iniciar Sesión", login_path %></a></li>
