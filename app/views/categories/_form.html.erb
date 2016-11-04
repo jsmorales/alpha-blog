@@ -1,0 +1,30 @@
+<h2 class="text-center"><%= titulo %></h2>
+<hr>
+<!-- Se renderiza con parametros -->
+<%= render 'shared/errors', objt: @category %>
+
+<div class="row">
+	
+	<div class="col-md-10 col-md-offset-2">
+
+		<%= form_for(@category, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+
+			<div class="form-group">
+				<%= f.label :name, "Nombre", class: "col-sm-2 control-label" %>
+				<div class="col-sm-6">
+					<%= f.text_field :name, class: "form-control", autofocus: true, placeholder: "Nombre de la categoría" %>
+				</div>				
+			</div>						
+			
+			<div class="form-group">
+		    	<div class="col-sm-offset-2 col-sm-6">		      		
+		      		<%= f.submit "Guardar", class: "btn btn-primary" %>
+		      		<%= link_to "Cancelar", categories_path, class: "btn btn-danger" %>
+		    	</div>		    	
+		  	</div>
+			
+		<%end%>
+
+	</div>
+	
+</div>
