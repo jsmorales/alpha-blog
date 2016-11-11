@@ -51,3 +51,4 @@ class CreateCategoriesTest < ActionDispatch::IntegrationTest
 	end
 
 end
+	
