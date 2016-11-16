@@ -2,6 +2,10 @@ class Article < ActiveRecord::Base
 	#indica que pertenece a user
 	belongs_to :user
 
+	#
+	has_many :article_categories
+	has_many :categories, through: :article_categories
+
 	#validacion de atributos
 
 	#valida que el titulo no esté vacío y que no sea menor de 5 ni mayor a 30.
