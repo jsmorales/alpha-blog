@@ -5,7 +5,16 @@ class CreateCategoriesTest < ActionDispatch::IntegrationTest
 	#test en caso de que se pueda crear perfectamente una
 	#categoría
 
+	#creando usuario para simular  log-in
+	def setup
+		@user = User.create(username: "jhon", email: "jhondoe@gmail.com", password: "12345", admin: true)
+	end
+
 	test 'get formulario y crear categoria' do
+		
+		#log in usuario
+		sign_in_as(@user, "12345")
+
 		#va al formulario
 		get new_category_path
 		#revisa que este la pagina
@@ -27,6 +36,9 @@ class CreateCategoriesTest < ActionDispatch::IntegrationTest
 	#test en caso de excepción, error
 
 	test 'categoria invalida resultados en error' do
+
+		#log in usuario
+		sign_in_as(@user, "12345")
 
 		#va al formulario
 		get new_category_path

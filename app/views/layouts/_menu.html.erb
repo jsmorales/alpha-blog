@@ -15,6 +15,23 @@
 		<div class="collapse navbar-collapse navbar-ex1-collapse">
 			<ul class="nav navbar-nav">
 				<li><%= link_to "Artículos", articles_path, class: "nv-link" %></li>
+				
+				<li>
+					<a href="#" class="dropdown-toggle nv-link" data-toggle="dropdown">Categorías <b class="caret"></b></a>
+					<ul class="dropdown-menu">
+
+						<% if logged_in? and current_user.admin? %>
+						<!-- debe ser admin loggueado para poder ver este menú-->
+							<li><%= link_to "Nueva", new_category_path %></li>
+							<li><%= link_to "Ver todo", categories_path %></li>
+							<li role="separator" class="divider"></li>
+						<% end %>
+						<% Category.all.each do |category|%>
+							<li><%= link_to category.name, category_path(category) %></li>
+						<%end%>								
+					</ul>
+				</li>
+
 				<li><%= link_to 'About', about_path, class: "nv-link" %></li>
 			</ul>
 			<form class="navbar-form navbar-left" role="search">
@@ -35,17 +52,17 @@
 						<% else %>
 							<li class="dropdown-header" >Alpha Blogger</li>
 						<% end %>
-						<li><a href="#"><%= link_to "Ver Perfil", user_path(current_user) %></a></li>
-						<li><a href="#"><%= link_to "Editar Perfil", edit_user_path(current_user) %></a></li>
+						<li><%= link_to "Ver Perfil", user_path(current_user) %></li>
+						<li><%= link_to "Editar Perfil", edit_user_path(current_user) %></li>
 						<li role="separator" class="divider"></li>
-						<li><a href="#"><%= link_to "Cerrar Sesión", logout_path, method: :delete %></a></li>
+						<li><%= link_to "Cerrar Sesión", logout_path, method: :delete %></li>
 					</ul>
 				<% else %>
 					<a href="#" class="dropdown-toggle nv-link" data-toggle="dropdown">Usuario <b class="caret"></b></a>
 					<ul class="dropdown-menu">
 
-						<li><a href="#"><%= link_to "Iniciar Sesión", login_path %></a></li>
-						<li><a href="#"><%= link_to "Registrarse", signup_path %></a></li>
+						<li><%= link_to "Iniciar Sesión", login_path %></li>
+						<li><%= link_to "Registrarse", signup_path %></li>
 				
 						<!--<li><a href="#">Another action</a></li>
 						<li><a href="#">Something else here</a></li>
