@@ -100,7 +100,7 @@ class ArticlesController < ApplicationController
 		def article_params
 			#aca se define que los unicos parametros permitidos son
 			#el titulo y la descripcion
-			params.require(:article).permit(:tittle, :description)
+			params.require(:article).permit(:tittle, :description, category_ids:[])
 		end
 
 		def require_same_user
