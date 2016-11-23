@@ -5,6 +5,7 @@
 		<tr>
 			<th>Título</th>
 			<th>Descripción</th>
+			<th>Categorías</th>
 			<th>Opciones</th>
 		</tr>
 	</thead>
@@ -16,6 +17,13 @@
 			<!-- este metodo permite limitar la catidad de
 			contenido que se queire ver.-->
 			<td><%= truncate(article.description, length: 50)%></td>
+			<td>
+				<% if article.categories.any? %>
+					<!-- Renderizar de esta forma causa el mismo efecto que 
+					escribir @plural.each-->					
+					<%= render article.categories %>
+				<% end %>
+			</td>
 			<td class="tbl-opciones">
 				<%= link_to raw("<span class='glyphicon glyphicon-eye-open'></span>"), article_path(article), class: "btn btn-primary", title: "Ver" %>
 				<!-- solo se muestran las opciones si esta logueado y ademas de eso 

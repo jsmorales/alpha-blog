@@ -20,6 +20,13 @@
 			<small class="badge">Creado: <%= time_ago_in_words(@article.created_at) %></small>
 			<small class="badge">Actualizado: <%= time_ago_in_words(@article.updated_at) %></small>
 
+			<% if @article.categories.any? %>
+				<!-- Renderizar de esta forma causa el mismo efecto que 
+				escribir @plural.each-->
+				<hr>
+				<p>Categorías: <%= render @article.categories %></p>
+			<% end %>
+
 			<hr>
 			<div class="col-sm-12">
 			<% if logged_in? && (current_user == @article.user || current_user.admin?) %>
