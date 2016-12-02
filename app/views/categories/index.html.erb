@@ -3,6 +3,10 @@
 
 <% @categories.each do |category| %>
 	<h3><%= link_to category.name, category_path(category) %></h3>
+
+	<% if logged_in? and current_user.admin? %>
+		<small><%= link_to "Editar", edit_category_path(category) %></small>
+	<% end %>
 	<small><%= pluralize(category.articles.count, "artículo") %></small>
 <%end%>
 
